@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    html, body, h1, h2, h3, h4, h5 {
+        font-family: "Open Sans", sans-serif
+    }
+
+    .bsp {
+        border-collapse: separate;
+        border-spacing: 0 15px;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    .textarea1 {
+        border: none;
+        color: black;
+        background-color: white;
+        text-align: center;
+    }
+
+    .label1 {
+        font-weight: bold;
+    }
+
+</style>
+<body class="w3-theme-l5">
+
+<div class="w3-top">
+    <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2"
+           href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+        <div>
+            <br>
+            <label></label>
+            <br>
+        </div>
+
+    </div>
+</div>
+
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+    <div class="menu-sidebar d-none d-lg-block">
+
+        <div class="w3-row">
+            <div class="w3-col m3">
+                <div class="w3-card w3-round w3-white">
+                    <div class="w3-container" style="height: 400px">
+                        <div>
+                            <br>
+                            <br>
+                        </div>
+                        <div align="center">
+                            <label style="font-size:30px">Quiz Manager</label>
+                        </div>
+                        <br>
+                        <div align="center">
+                        <textarea style="height: 250px" class="textarea1" disabled>This is a simple API design for Quiz. It includes the following functionalities such as Adding quiz, Adding Question and View the questions listed under a particular Quiz
+
+                        </textarea>
+                        </div>
+                        <div>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="w3-card w3-round">
+                    <div class="w3-white">
+                        <button class="w3-button w3-block w3-theme-l1 w3-left-align"
+                                onclick="window.location.href='/addquiz'">Add quiz
+                        </button>
+                        <button class="w3-button w3-block w3-theme-l1 w3-left-align"
+                                onclick="window.location.href='/addquestion'"> Add question
+                        </button>
+                        <button class="w3-button w3-block w3-theme-l1 w3-left-align"
+                                onclick="window.location.href='/viewquestion'"> View question
+                        </button>
+                        <button class="w3-button w3-block w3-theme-l1 w3-left-align"
+                                onclick="window.location.href='/login'"> Log out
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+
+            <div class="w3-col m7" style="width: 950px">
+                <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+                    <form method="post">
+                        {% csrf_token %}
+                        <br>
+                        <div>
+                            <div align="center">
+                                <h3>Add Questions</h3>
+                            </div>
+                            <div align="right" style="margin-right: 30px">
+                                <label class="label1">Question ID :</label>
+                                <label class="label1">{{ quesid }}</label>
+                            </div>
+                            <hr class="w3-clear">
+                            <table style="width:600px" align="center" class="bsp">
+                                <tr>
+                                    <td><label>Quiz Name</label></td>
+                                    <td align="right"><select name="selectquiz" style="width: 430px">
+                                        {% for item in data %}
+                                            <option>{{ item.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Name</label>
+                                    </td>
+                                    <td align="right">
+                                        <label>
+                                            <input type="text" name="qname" style="width: 430px" required>
+                                        </label>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <br>
+                            <table style="width:600px" align="center" class="bsp">
+                                <tr>
+                                    <td>
+                                        <label>Option 1 :</label>
+                                    </td>
+                                    <td align="right">
+                                        <label>
+                                            <textarea style="width: 430px" name="opt1" required></textarea>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Option 2 :</label>
+                                    </td>
+                                    <td align="right">
+                                        <label>
+                                            <textarea style="width: 430px" name="opt2" required></textarea>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Option 3 :</label>
+                                    </td>
+                                    <td align="right">
+                                        <label>
+                                            <textarea style="width: 430px" name="opt3" required></textarea>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Option 4 :</label>
+                                    </td>
+                                    <td align="right">
+                                        <label>
+                                            <textarea style="width: 430px" name="opt4" required></textarea>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Correct answer</label>
+                                    </td>
+                                    <td align="right">
+                                        <label>
+                                            <textarea style="width: 430px" name="correctans" required></textarea>
+                                        </label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Point:</label>
+                                    </td>
+                                    <td align="right">
+                                        <label>
+                                            <input type="number" style="width: 430px" name="anspoint" required>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <br>
+                        <br>
+                        <hr class="w3-clear">
+                        <br>
+                        <div align="center">
+                            <button name="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        <br>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+</body>
+</html>

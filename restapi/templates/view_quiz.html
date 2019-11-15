@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    html, body, h1, h2, h3, h4, h5 {
+        font-family: "Open Sans", sans-serif
+    }
+
+    .bsp {
+        border-collapse: separate;
+        border-spacing: 0 15px;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    .textarea1 {
+        border: none;
+        color: black;
+        background-color: white;
+        text-align: center;
+    {#background-color:  	#F8F8F8;#}
+    }
+
+</style>
+<body class="w3-theme-l5">
+
+<div class="w3-top">
+    <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2"
+           href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+        <div>
+            <br>
+            <label></label>
+            <br>
+        </div>
+
+    </div>
+</div>
+
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+    <div class="menu-sidebar d-none d-lg-block">
+        <div class="w3-row">
+            <div class="w3-col m3">
+                <div class="w3-card w3-round w3-white">
+
+                    <div class="w3-container" style="height: 400px">
+                        <div>
+                            <br>
+                            <br>
+                        </div>
+                        <div align="center">
+                            <label style="font-size:30px">Quiz Manager</label>
+                        </div>
+                        <br>
+                        <div align="center">
+                        <textarea style="height: 200px" class="textarea1" disabled>This is a simple API design for Quiz. It includes the following functionalities such as Adding quiz, Adding Question and View the questions listed under a particular Quiz
+                        </textarea>
+                        </div>
+                        <div>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="w3-card w3-round">
+                    <div class="w3-white">
+                        {#            <i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i>#}
+                        <button class="w3-button w3-block w3-theme-l1 w3-left-align"
+                                onclick="window.location.href='/addquiz'">Add quiz
+                        </button>
+                        <button class="w3-button w3-block w3-theme-l1 w3-left-align"
+                                onclick="window.location.href='/addquestion'"> Add question
+                        </button>
+                        <button class="w3-button w3-block w3-theme-l1 w3-left-align"
+                                onclick="window.location.href='/viewquestion'"> View question
+                        </button>
+                        <button class="w3-button w3-block w3-theme-l1 w3-left-align"
+                                onclick="window.location.href='/login'"> Log out
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+
+            <div class="w3-col m7" style="width: 950px">
+                <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+
+                    <form method="post">
+                        <br>
+
+                        <div align="center">
+                            <h3>View Questions</h3>
+                        </div>
+                        <br>
+                        <div align="right" style="margin-right: 30px">
+
+                        </div>
+                        <hr class="w3-clear">
+
+                        <div align="right">
+                            <br>
+                            <select name="selectquiz" id="val" required>
+                                <option disabled selected>Select quiz name</option>
+                                {% for item in data1 %}
+                                    <option id="v">{{ item.name }}</option>
+                                {% endfor %}
+                            </select>
+                            <button value="Search" name="Search">Search</button>
+                        </div>
+                        <br>
+
+                    </form>
+
+                    <table style="width:800px" align="center" class="bsp">
+                        <tr>
+                            <td style="vertical-align: top">Quiz name :</td>
+                            <td>
+                                <label>{{ selectedval.name }}</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: top">Descreption :</td>
+                            <td><textarea style="width: 600px; alignment: center;height: 200px"
+                                          disabled>{{ selectedval.description }}</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br><br>
+                            </td>
+                        </tr>
+                        {% for item in data %}
+                            <tr>
+                                <td>Question ID :</td>
+                                <td><label>{{ item.id }}</label></td>
+                            </tr>
+                            <tr>
+                                <td>Question name :</td>
+                                <td><label>{{ item.name }}</label></td>
+                            </tr>
+                            <tr>
+                                <td>Options :</td>
+                                <td><label>{{ item.options }}</label></td>
+                            </tr>
+                            <tr>
+                                <td style="color: green">Correct answer :</td>
+                                <td><label>{{ item.correct_option }}</label></td>
+                            </tr>
+                            <tr>
+                                <td>Points:</td>
+                                <td><label>{{ item.points }}</label></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <hr class="w3-clear">
+                                </td>
+                                <td>
+                                    <hr class="w3-clear">
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+
+<script>
+    function diaplay() {
+        var val = document.getElementById('val').value;
+        document.getElementById('tt').value = val
+        document.getElementById('ttt').value =
+        {{selectedval}}
+
+    }
+
+</script>
+
+</body>
+
+</html>

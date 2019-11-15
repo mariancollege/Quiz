@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    html, body, h1, h2, h3, h4, h5 {
+        font-family: "Open Sans", sans-serif
+    }
+
+    .bsp {
+        border-collapse: separate;
+        border-spacing: 0 15px;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    .textarea1 {
+        border: none;
+        color: black;
+        background-color: white;
+        text-align: center;
+    }
+
+    .label1 {
+        font-weight: bold;
+    }
+
+    .logbtn {
+
+            color: white;
+            background-color: lightskyblue;
+            width: 90px;
+            height: 30px;
+        }
+
+</style>
+<body class="w3-theme-l5">
+<div class="w3-top">
+    <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2"
+           href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+        <div>
+            <br>
+            <label></label>
+            <br>
+        </div>
+    </div>
+</div>
+
+
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+    <div class="menu-sidebar d-none d-lg-block">
+        <div class="w3-row">
+            <div class="w3-col m3">
+                <div class="w3-card w3-round w3-white">
+                    <div class="w3-container" style="height: 400px">
+                        <div>
+                            <br>
+                            <br>
+                        </div>
+                        <div align="center">
+                            <label style="font-size:30px">Quiz Manager</label>
+                        </div>
+                        <br>
+                        <div align="center">
+                            <textarea style="height: 250px" class="textarea1" disabled>This is a simple API design for Quiz. It includes the following functionalities such as Adding quiz, Adding Question and View the questions listed under a particular Quiz</textarea>
+                        </div>
+                        <div>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="w3-card w3-round">
+                    <div class="w3-white">
+                        <button class="w3-button w3-block w3-theme-l1 w3-left-align"
+                                onclick="window.location.href='/addquiz'">Add quiz
+                        </button>
+                        <button class="w3-button w3-block w3-theme-l1 w3-left-align"
+                                onclick="window.location.href='/addquestion'"> Add question
+                        </button>
+                        <button class="w3-button w3-block w3-theme-l1 w3-left-align"
+                                onclick="window.location.href='/viewquestion'"> View question
+                        </button>
+                        <button class="w3-button w3-block w3-theme-l1 w3-left-align"
+                                onclick="window.location.href='/login'"> Log out
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+            <div class="w3-col m7" style="width: 950px">
+                <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+                    {% csrf_token %}
+                    <br>
+                    <div align="center">
+                        <h3>Add Quiz</h3>
+                    </div>
+                    <div align="right" style="margin-right: 30px">
+                    </div>
+                    <div align="right" style="margin-right: 30px">
+                        <label class="label1">Quiz ID :</label>
+                        <label class="label1">{{ quizid }}</label>
+                    </div>
+                    <hr class="w3-clear">
+                    <div>
+                        <form method="post">
+                            <table style="width:600px" align="center" class="bsp">
+
+                                <tr>
+                                    <td>
+                                        <label>Name</label>
+                                    </td>
+                                    <td align="right">
+                                        <label>
+                                            <input type="text" name="qname" style="width: 250px" required autofocus>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <label>Descreption</label>
+                                    </td>
+                                <tr>
+                                    <td colspan="2">
+                                        <div align="center">
+                                            <textarea style="width: 600px; alignment: center;height: 200px"
+                                                      name="qdescription" required></textarea>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <hr class="w3-clear">
+                            <div align="center" style="padding-top: 30px">
+                                <button class="btn btn-primary">Submit</button>
+                                <br><br><br><br>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+</body>
+</html>

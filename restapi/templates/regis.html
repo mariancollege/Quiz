@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+
+    <style>
+        .box {
+            width: 500px;
+            height: 330px;
+            background-color: #f8f8f8;
+            margin-top: 120px;
+
+        }
+
+        .logbtn {
+
+            color: white;
+            background-color: lightskyblue;
+            width: 90px;
+            height: 30px;
+        }
+
+        .alertlabel {
+            font-size: 11px;
+        }
+
+        .lb1 {
+            alignment: center;
+            size: 25px;
+            color: white;
+        }
+
+        .div2 {
+            height: 50px;
+            background: #49475e
+        }
+
+        td {
+            width: 50%;
+            text-align: left;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<form method="post">
+    {% csrf_token %}
+    <div align="center">
+        <div align="center" class="box">
+            <div class="div2">
+                <br>
+                <label class="lb1">Registration</label>
+            </div>
+            <br>
+            <table class="td">
+                <table>
+                    <tr>
+                        <td>
+                            <label>Username</label>
+                        </td>
+                        <td>
+                            <input type="email" name="name" required autofocus>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <td>
+                            <label>Password</label>
+                        </td>
+                        <td>
+                            <input type="password" name="pswda" required>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <td>
+                            <label>Confirm Password</label>
+                        </td>
+                        <td>
+                            <input type="password" name="pswdb" required>
+                        </td>
+                    </tr>
+
+                </table>
+            </table>
+            <br>
+            <br>
+            <div>
+                <button class="btn btn-info">Register</button>
+            </div>
+
+            <script>
+                {% if e %}
+                    alert('{{ e }}');
+                {% endif %}
+            </script>
+            <br>
+            <label style="font-size: 11px"> <a href="http://127.0.0.1:8000/login/"> <<< </a></label>
+        </div>
+    </div>
+</form>
+<script>
+    function ok() {
+        alert("Login ok")
+    }
+</script>
+</body>
+</html>
