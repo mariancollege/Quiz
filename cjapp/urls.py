@@ -23,7 +23,6 @@ from restapi import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # url(r'', index),
     path('quiz', views.quiz, name='quiz'),
     path('addquestion/', views.addquestion, name='addquestion'),
     path('viewanswer/', views.view_answer, name='view_answer'),

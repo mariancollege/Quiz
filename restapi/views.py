@@ -37,7 +37,6 @@ def addquestion(request):
         quid=1
     ob1 = quiz.objects.all()
     if request.method=='POST':
-        # quno=request.POST.get('qno')
         quizname=request.POST.get('selectquiz')
         qname=request.POST.get("qname")
         opti1=request.POST.get('opt1')
@@ -84,11 +83,7 @@ def log(request):
 
         if registration.objects.all().filter(uname=un).filter(pswd1=ps).exists():
             obj=registration.objects.get(uname=un)
-            # if obj.id==0:
             return redirect('/viewquestion')
-            # else:
-            #     return redirect('/addquiz')
-            # return redirect('/welcome',{'msg':'Successfully login'})
         else:
             return render(request, 'log.html', {'msg': 'Incorrect username or password'})
     return render(request, 'log.html')
